@@ -1,18 +1,22 @@
 import cx from "classnames";
 import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import GlobalRoutes from "../routes";
 import navbar from "../../sass/components/navbar.module.sass";
 import utils from "../../sass/components/utils.module.sass";
+import { useDispatch, useSelector } from "react-redux";
+import { setTheme } from "../redux/actions/global";
 
 const RouteLinks = GlobalRoutes.map((r) => (
     <li key={uuid()} className={navbar.item}>
-        <Link to={r.url}>{r.name}</Link>
+        <a href={r.url}>{r.name}</a>
     </li>
 ));
 
 const NavBar = () => {
+    const dispatch = useDispatch();
+    const theme = useSelector((state) => state.theme);
     const [expanded, setExpanded] = useState("collapsed");
 
     return (
@@ -49,10 +53,26 @@ const NavBar = () => {
                     <div className={navbar.divider}>
                         <hr />
                     </div>
-                    <button className={navbar.buttonItem}>Dark Theme</button>
+                    <button
+                        aria-label="Change Theme to Dark"
+                        className={navbar.buttonItem}
+                        onClick={() => {
+                            dispatch(
+                                setTheme(theme === "light" ? "dark" : "light")
+                            );
+                            //setExpanded("collapse");
+                        }}
+                    >
+                        {theme === "light" ? "Dark Theme" : "Light Theme"}
+                    </button>
                 </ul>
             </aside>
-            <section className={navbar.dimmer} data-hh-expanded={expanded}></section>
+            <section
+                className={navbar.dimmer}
+                data-hh-theme={theme}
+                data-hh-expanded={expanded}
+                onClick={() => setExpanded("collapse")}
+            ></section>
         </Fragment>
     );
 };

@@ -12,19 +12,19 @@
     box-sizing: border-box
     font-family: Poppins, PoppinsLocal, sans-serif
 
-html[data-hh-theme="hh-light"]
+#hh-root[data-hh-theme="light"]
     --theme-text-color: #222831
     --theme-background-color: #f5f4f4
     --theme-text-color-bright: #000000
     --theme-background-color-bright: #ffffff
 
-html[data-hh-theme="hh-dark"]
+#hh-root[data-hh-theme="dark"]
         --theme-text-color: #f5f4f4
         --theme-background-color: #222831
         --theme-text-color-bright: #ffffff
         --theme-background-color-bright: #000000
 
-html, html > *, #__hh_app_
+html, html > *, #__hh_app_, #hh-root
     height: 100%
     margin: 0
     border: 0
