@@ -2,40 +2,25 @@ import "../sass/fonts.sass";
 import "../sass/app.sass";
 import loadable from "@loadable/component";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useEffect } from "react";
-import { createStore } from "redux";
 import { Provider, useSelector } from "react-redux";
-import AppReducers from "./redux/reducers";
-import { useDispatch } from "react-redux";
-import { setTheme } from "./redux/actions/global";
+import { store, persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const HomePage = loadable((props) => import("./pages/home"));
 const NavBar = loadable((props) => import("./components/navbar"));
 
-const GlobalStore = createStore(
-    AppReducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
 const HeinHein = () => {
     return (
-        <Provider store={GlobalStore}>
-            <App />
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <App />
+            </PersistGate>
         </Provider>
     );
 };
 
 const App = () => {
-    const dispatch = useDispatch();
-    const theme = useSelector(state => state.theme);
-
-    useEffect(() => {
-        let theme = window.matchMedia("(prefers-color-scheme: dark)");
-        theme.addEventListener("change", (e) =>
-            dispatch(setTheme(e.matches ? "dark" : "light"))
-        );
-        dispatch(setTheme(theme.matches ? "dark" : "light"));
-    }, [dispatch]);
+    const theme = useSelector((state) => state.theme);
 
     return (
         <BrowserRouter>

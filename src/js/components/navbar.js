@@ -1,6 +1,5 @@
 import cx from "classnames";
 import { Fragment, useState } from "react";
-//import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import GlobalRoutes from "../routes";
 import navbar from "../../sass/components/navbar.module.sass";
@@ -48,24 +47,22 @@ const NavBar = () => {
                 >
                     <i className="bi bi-x"></i>
                 </button>
-                <ul className={navbar.links}>
-                    {RouteLinks}
-                    <div className={navbar.divider}>
-                        <hr />
-                    </div>
-                    <button
-                        aria-label="Change Theme to Dark"
-                        className={navbar.buttonItem}
-                        onClick={() => {
-                            dispatch(
-                                setTheme(theme === "light" ? "dark" : "light")
-                            );
-                            //setExpanded("collapse");
-                        }}
-                    >
-                        {theme === "light" ? "Dark Theme" : "Light Theme"}
-                    </button>
-                </ul>
+                <ul className={navbar.links}>{RouteLinks}</ul>
+                <div className={navbar.divider}>
+                    <hr />
+                </div>
+                <button
+                    aria-label="Change Theme to Dark"
+                    className={navbar.buttonItem}
+                    onClick={() => {
+                        dispatch(
+                            setTheme(theme === "light" ? "dark" : "light")
+                        );
+                        //setExpanded("collapse");
+                    }}
+                >
+                    {theme === "light" ? "Dark Theme" : "Light Theme"}
+                </button>
             </aside>
             <section
                 className={navbar.dimmer}
