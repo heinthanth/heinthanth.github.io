@@ -1,0 +1,10 @@
+--- node_modules/bootstrap-icons/font/bootstrap-icons.css	2021-06-28 21:06:17.715341599 +0630
++++ bootstrap-icons.css	2021-06-28 21:06:38.952111038 +0630
+@@ -2,6 +2,7 @@
+   font-family: "bootstrap-icons";
+   src: url("./fonts/bootstrap-icons.woff2?856008caa5eb66df68595e734e59580d") format("woff2"),
+ url("./fonts/bootstrap-icons.woff?856008caa5eb66df68595e734e59580d") format("woff");
++  font-display: swap;
+ }
+ 
+ [class^="bi-"]::before,
