@@ -44,12 +44,11 @@ const HomePage = () => (
         <div className={homepage.bottomNavigator}>
             <div className={cx(utils.container, utils.flexItem)}>
                 <ul>{SocialLinks}</ul>
-                <button
-                    className={homepage.nextpage}
-                    aria-label="Go to Next Page"
-                >
-                    <i className="bi bi-arrow-right-square"></i>
-                </button>
+                <div className={homepage.bottomButtons}>
+                    <button aria-label="Go to Next Page">
+                        <i className="bi bi-arrow-right-square"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>

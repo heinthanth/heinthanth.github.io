@@ -9,16 +9,16 @@ const NavBar = loadable((props) => import("./components/navbar"));
 
 const HeinHein = () => {
     useEffect(() => {
-        var theme = window.matchMedia("(prefers-color-scheme: dark)");
+        let theme = window.matchMedia("(prefers-color-scheme: dark)");
         theme.addEventListener("change", (e) => {
             document.documentElement.setAttribute(
-                "hh-theme",
+                "data-hh-theme",
                 e.matches ? "hh-dark" : "hh-light"
             );
         });
         document.documentElement.setAttribute(
-            "hh-theme",
-            theme.matches ? "hh-dark" : "hh-light"
+            "data-hh-theme",
+            true ? "hh-dark" : "hh-light"
         );
     }, []);
 

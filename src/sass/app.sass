@@ -12,13 +12,13 @@
     box-sizing: border-box
     font-family: Poppins, PoppinsLocal, sans-serif
 
-html[hh-theme="hh-light"]
+html[data-hh-theme="hh-light"]
     --theme-text-color: #222831
     --theme-background-color: #f5f4f4
     --theme-text-color-bright: #000000
     --theme-background-color-bright: #ffffff
 
-html[hh-theme="hh-dark"]
+html[data-hh-theme="hh-dark"]
         --theme-text-color: #f5f4f4
         --theme-background-color: #222831
         --theme-text-color-bright: #ffffff
@@ -49,3 +49,6 @@ a
 
     &:visited
         color: var(--theme-text-color)
+
+button
+    -webkit-tap-highlight-color: transparent
