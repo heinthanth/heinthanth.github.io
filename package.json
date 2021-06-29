@@ -22,7 +22,7 @@
     "build": "GENERATE_SOURCEMAP=false craco build",
     "postbuild": "react-snap && purgecss --css build/static/css/*.css --content build/*.html build/static/js/*.js --output build/static/css",
     "prehost": "npm run build",
-    "host": "gh-pages -b web -d build",
+    "host": "gh-pages -m 'auto committed updates' -b web -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
