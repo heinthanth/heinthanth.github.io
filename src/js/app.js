@@ -1,4 +1,3 @@
-import "../sass/fonts.sass";
 import "../sass/app.sass";
 import loadable from "@loadable/component";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
