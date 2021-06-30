@@ -36,47 +36,68 @@ const NavBar = () => {
                 </div>
             </nav>
             <aside data-hh-expanded={expanded} className={navbar.sidenav}>
-                <a href="/" className={navbar.logo}>
-                    HIIIiN
-                    <small className={navbar.logotail}> is me</small>
-                </a>
-                <button
-                    className={navbar.closeSideNav}
-                    aria-label="Close Side-Menu"
-                    onClick={() => setExpanded("collapse")}
-                >
-                    <i className="bi bi-x"></i>
-                </button>
-                <ul className={navbar.links}>
-                    {RouteLinks}
-                    {process.env.NODE_ENV === "production" &&
-                    navigator.userAgent === "ReactSnap" ? (
-                        <Fragment>
-                            <li className={navbar.item}>
-                                <a className={navbar.linkItem} href="/admin">
-                                    Admin
-                                </a>
-                            </li>
-                            <li className={navbar.item}>
-                                <a className={navbar.linkItem} href="/404.html">
-                                    E-404
-                                </a>
-                            </li>
-                        </Fragment>
-                    ) : null}
-                </ul>
-                <div className={navbar.divider}>
-                    <hr />
+                <div className={navbar.header}>
+                    <a href="/" className={navbar.logo}>
+                        HIIIiN
+                        <small className={navbar.logotail}> is me</small>
+                    </a>
+                    <button
+                        className={navbar.closeSideNav}
+                        aria-label="Close Side-Menu"
+                        onClick={() => setExpanded("collapse")}
+                    >
+                        <i className="bi bi-x"></i>
+                    </button>
                 </div>
-                <button
-                    aria-label="Change Theme to Dark"
-                    className={navbar.buttonItem}
-                    onClick={() =>
-                        dispatch(setTheme(theme === "light" ? "dark" : "light"))
-                    }
-                >
-                    {theme === "light" ? "Dark Theme" : "Light Theme"}
-                </button>
+                <div className={navbar.rest}>
+                    <ul className={navbar.links}>
+                        {RouteLinks}
+                        {process.env.NODE_ENV === "production" &&
+                        navigator.userAgent === "ReactSnap" ? (
+                            <Fragment>
+                                <li className={navbar.item}>
+                                    <a
+                                        className={navbar.linkItem}
+                                        href="/admin"
+                                    >
+                                        Admin
+                                    </a>
+                                </li>
+                                <li className={navbar.item}>
+                                    <a
+                                        className={navbar.linkItem}
+                                        href="/404.html"
+                                    >
+                                        E-404
+                                    </a>
+                                </li>
+                            </Fragment>
+                        ) : null}
+                    </ul>
+                    <div className={navbar.divider}>
+                        <hr />
+                    </div>
+                    <button
+                        aria-label="Change Theme to Dark"
+                        className={cx(navbar.buttonItem, navbar.themeToggler)}
+                        data-hh-theme={theme}
+                        onClick={() =>
+                            dispatch(
+                                setTheme(theme === "light" ? "dark" : "light")
+                            )
+                        }
+                    >
+                        {theme === "light" ? (
+                            <Fragment>
+                                Dark ( <i className="bi bi-moon"></i> )
+                            </Fragment>
+                        ) : (
+                            <Fragment>
+                                Light ( <i className="bi bi-sun"></i> )
+                            </Fragment>
+                        )}
+                    </button>
+                </div>
             </aside>
             <section
                 className={navbar.dimmer}

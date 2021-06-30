@@ -4,7 +4,7 @@
     height: 86px
     display: flex
     align-items: center
-    //box-shadow: 0 .125rem .25rem rgba(#000000, .075)
+    box-shadow: 0 .125rem .25rem rgba(#000000, .075)
     position: fixed
     top: 0
     left: 0
@@ -73,7 +73,6 @@
     height: 100%
     z-index: 20
     background-color: var(--theme-background-color)
-    padding: 0px 15px 20px
     overflow-y: scroll
     overflow-x: hidden
     -ms-overflow-style: none
@@ -86,77 +85,102 @@
     &::-webkit-scrollbar
         display: none
 
-    .logo
-        padding-left: 10px
-        font-size: 22px
-        line-height: 86px
-        text-transform: uppercase
+    .header
+        height: 86px
+        display: flex
+        align-items: center
+        box-shadow: 0 .125rem .25rem rgba(#000000, .075)
+        padding: 0px 15px
 
-        .logotail
-            font-size: 11px
-            font-weight: normal
-            text-transform: none
+        .logo
+            padding-left: 10px
+            font-size: 22px
+            text-transform: uppercase
+            line-height: 86px
 
-    .closeSideNav
-        background-color: transparent
-        border: none
-        outline: none
-        font-size: 36px
-        padding: 0
-        color: var(--theme-text-color)
-        cursor: pointer
-        position: absolute
-        right: 15px
-        //right: 75px
-        top: 0px
-        line-height: 86px
+            .logotail
+                font-size: 11px
+                font-weight: normal
+                text-transform: none
 
-    .links
-        padding: 0
-        margin: 0
-        list-style: none
+        .closeSideNav
+            background-color: transparent
+            border: none
+            outline: none
+            font-size: 36px
+            padding: 0
+            color: var(--theme-text-color)
+            cursor: pointer
+            line-height: 86px
+            margin-left: auto
 
-        .item
-            display: block
-            padding: 0px 10px
+    .rest
+        padding: 20px 15px
+
+        .links
+            padding: 0
+            margin: 0
+            list-style: none
+
+            .item
+                display: block
+                padding: 0px 10px
+                font-size: 18px
+                border-radius: 5px
+                transition: background-color 0.3s
+                margin-bottom: 5px
+
+                .linkItem
+                    padding: 10px 0px
+                    display: block
+                    width: 100%
+                    pointer-events: none
+
+                &:hover
+                    background-color: var(--theme-text-color-bright)
+
+                    .linkItem
+                        color: var(--theme-background-color)
+
+        .divider
+            padding: 5px 2px 10px
+
+            hr
+                border-color: var(--theme-text-color)
+
+        .buttonItem
+            background-color: transparent
+            border: none
+            padding: 10px
             font-size: 18px
             border-radius: 5px
+            color: var(--theme-text-color)
+            width: 100%
+            text-align: left
             transition: background-color 0.3s
-            margin-bottom: 5px
+            cursor: pointer
 
-            .linkItem
-                padding: 10px 0px
-                display: block
-                width: 100%
-                pointer-events: none
+            &.themeToggler
+                text-transform: uppercase
+                background-color: rgba(255, 255, 255, 0.1)
+
+                &:hover
+                    background-color: var(--theme-text-color-bright)
+                    color: var(--theme-background-color)
+
+                &[data-hh-theme="light"]
+                    background-color: rgba(0, 0, 0, 0.1)
+
+                    &:hover
+                        background-color: var(--theme-text-color-bright)
+                        color: var(--theme-background-color)
+
+                i
+                    font-size: 20px
 
             &:hover
                 background-color: var(--theme-text-color-bright)
-
-                .linkItem
-                    color: var(--theme-background-color)
-
-    .divider
-        padding: 5px 2px 10px
-
-        hr
-            border-color: var(--theme-text-color)
-
-    .buttonItem
-        background-color: transparent
-        border: none
-        padding: 10px
-        font-size: 18px
-        border-radius: 5px
-        color: var(--theme-text-color)
-        width: 100%
-        text-align: left
-        transition: background-color 0.3s
-        cursor: pointer
-
-        &:hover
-            background-color: var(--theme-text-color-bright)
-            color: var(--theme-background-color)
+                color: var(--theme-background-color)
 
 .dimmer
     position: fixed

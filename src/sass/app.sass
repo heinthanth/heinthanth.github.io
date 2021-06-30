@@ -32,6 +32,15 @@ html, html > *, #__hh_app_, #hh-root
     min-width: 350px
     color: var(--theme-text-color)
     background-color: var(--theme-background-color)
+    transition: height 0.5s
+
+#hh-root
+    overflow-y: scroll
+    -ms-overflow-style: none
+    scrollbar-width: none
+
+    &::-webkit-scrollbar
+        display: none
 
 @for $i from 1 through 6
     h#{$i}

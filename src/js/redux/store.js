@@ -5,11 +5,7 @@ import AllReducers from "./reducers";
 
 const persistConfig = { key: "hh-root", storage };
 const persistedReducer = persistReducer(persistConfig, AllReducers);
-
-const composedEnhancers =
-    process.env.NODE_ENV === "production"
-        ? compose
-        : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composedEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(persistedReducer, composedEnhancers());
 export const persistor = persistStore(store);
