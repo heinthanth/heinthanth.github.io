@@ -3,11 +3,11 @@
     "static/js/0.10cc3480.chunk.js": "/static/js/0.10cc3480.chunk.js",
     "main.css": "/static/css/main.bee5c42b.chunk.css",
     "main.js": "/static/js/main.9a845995.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.f294f623.js",
+    "runtime-main.js": "/static/js/runtime-main.86a85643.js",
     "static/css/3.562af54b.chunk.css": "/static/css/3.562af54b.chunk.css",
     "static/js/3.9d2a8421.chunk.js": "/static/js/3.9d2a8421.chunk.js",
     "static/css/4.b15b1fb7.chunk.css": "/static/css/4.b15b1fb7.chunk.css",
-    "static/js/4.7f3ca15d.chunk.js": "/static/js/4.7f3ca15d.chunk.js",
+    "static/js/4.f1601944.chunk.js": "/static/js/4.f1601944.chunk.js",
     "static/css/5.912d9f84.chunk.css": "/static/css/5.912d9f84.chunk.css",
     "static/js/5.79c2fbf2.chunk.js": "/static/js/5.79c2fbf2.chunk.js",
     "static/css/6.912d9f84.chunk.css": "/static/css/6.912d9f84.chunk.css",
@@ -20,7 +20,7 @@
     "static/media/app.sass": "/static/media/bootstrap-icons.dfd0ea12.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.f294f623.js",
+    "static/js/runtime-main.86a85643.js",
     "static/css/3.562af54b.chunk.css",
     "static/js/3.9d2a8421.chunk.js",
     "static/css/main.bee5c42b.chunk.css",
