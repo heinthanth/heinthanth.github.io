@@ -1,9 +1,10 @@
 import cx from "classnames";
 import { v4 as uuid } from "uuid";
-import homepage from "../../sass/pages/home-shared.module.sass";
-import utils from "../../sass/components/utils.module.sass";
-import { Fragment } from "react";
 import { Helmet } from "react-helmet";
+import admin from "../../../sass/pages/home-shared.module.sass";
+import utils from "../../../sass/components/utils.module.sass";
+import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 const SocialLinks = [
     {
@@ -27,33 +28,33 @@ const SocialLinks = [
         url: "https://linkedin.com/in/heinthanth",
     },
 ].map((l) => (
-    <li key={uuid()} className={homepage.item}>
+    <li key={uuid()} className={admin.item}>
         <a href={l.url} target="_blank" rel="noreferrer" aria-label={l.name}>
             <i className={`bi bi-${l.icon}`}></i>
         </a>
     </li>
 ));
 
-const HomePage = () => (
+const AdminPage = () => (
     <Fragment>
         <Helmet>
-            <title>Home | HIIIiN</title>
+            <title>Login Here | HIIIiN</title>
         </Helmet>
-        <section className={cx(homepage.home, utils.container)}>
-            <div className={homepage.intro}>
-                <h1>Hein Thant</h1>
+        <section className={cx(admin.home, utils.container)}>
+            <div className={admin.intro}>
+                <h1>Oops!</h1>
                 <p>
-                    Just a CS student, Full-stack Web Developer, Junior DevOps
-                    and Linux Lover
+                    Nice attempt ... FBI is
+                    knocking ur door ... Ha Ha Ha ... 
                 </p>
             </div>
-            <div className={homepage.bottomNavigator}>
+            <div className={admin.bottomNavigator}>
                 <div className={cx(utils.container, utils.flexItem)}>
                     <ul>{SocialLinks}</ul>
-                    <div className={homepage.bottomButtons}>
-                        <button aria-label="Go to Next Page">
-                            <i className="bi bi-arrow-right-square"></i>
-                        </button>
+                    <div className={admin.bottomButtons}>
+                        <Link to="/" aria-label="Go to Home Page">
+                            <i className="bi bi-arrow-left-square"></i>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -61,4 +62,4 @@ const HomePage = () => (
     </Fragment>
 );
 
-export default HomePage;
+export default AdminPage;

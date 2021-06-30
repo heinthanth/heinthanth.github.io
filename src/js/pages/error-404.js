@@ -4,6 +4,7 @@ import homepage from "../../sass/pages/home-shared.module.sass";
 import utils from "../../sass/components/utils.module.sass";
 import { Fragment } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const SocialLinks = [
     {
@@ -34,26 +35,26 @@ const SocialLinks = [
     </li>
 ));
 
-const HomePage = () => (
+const Error404 = () => (
     <Fragment>
         <Helmet>
-            <title>Home | HIIIiN</title>
+            <title>404 - NOT FOUND</title>
         </Helmet>
         <section className={cx(homepage.home, utils.container)}>
             <div className={homepage.intro}>
-                <h1>Hein Thant</h1>
+                <h1>E-404</h1>
                 <p>
-                    Just a CS student, Full-stack Web Developer, Junior DevOps
-                    and Linux Lover
+                    Oops, the page u requested hasn't been found!
+                    Check the URL or spelling ...
                 </p>
             </div>
             <div className={homepage.bottomNavigator}>
                 <div className={cx(utils.container, utils.flexItem)}>
                     <ul>{SocialLinks}</ul>
                     <div className={homepage.bottomButtons}>
-                        <button aria-label="Go to Next Page">
-                            <i className="bi bi-arrow-right-square"></i>
-                        </button>
+                        <Link to="/" aria-label="Go to Home Page">
+                            <i className="bi bi-arrow-left-square"></i>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -61,4 +62,4 @@ const HomePage = () => (
     </Fragment>
 );
 
-export default HomePage;
+export default Error404;

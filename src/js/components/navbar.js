@@ -9,7 +9,7 @@ import { setTheme } from "../redux/actions/global";
 
 const RouteLinks = GlobalRoutes.map((r) => (
     <li key={uuid()} className={navbar.item}>
-        <a href={r.url}>{r.name}</a>
+        <span className={navbar.linkItem}>{r.name}</span>
     </li>
 ));
 

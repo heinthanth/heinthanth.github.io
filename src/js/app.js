@@ -7,6 +7,8 @@ import { PersistGate } from "redux-persist/integration/react";
 
 const HomePage = loadable((props) => import("./pages/home"));
 const NavBar = loadable((props) => import("./components/navbar"));
+const Error404 = loadable((props) => import("./pages/error-404"));
+const AdminPage = loadable((props) => import("./pages/admin/index"));
 
 const HeinHein = () => {
     return (
@@ -26,8 +28,14 @@ const App = () => {
             <div id="hh-root" data-hh-theme={theme}>
                 <NavBar />
                 <Switch>
-                    <Route>
+                    <Route path="/" exact>
                         <HomePage />
+                    </Route>
+                    <Route path="/admin">
+                        <AdminPage />
+                    </Route>
+                    <Route>
+                        <Error404 />
                     </Route>
                 </Switch>
             </div>
