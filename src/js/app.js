@@ -29,15 +29,20 @@ const App = () => {
     const theme = useSelector((state) => state.theme);
 
     useEffect(() => {
-        ReactGA.initialize("UA-140479987-2", {
-            debug: process.env.NODE_ENV === "development",
-        });
+        if (process.env.NODE_ENV === "production")
+            ReactGA.initialize("UA-140479987-2", {
+                debug: process.env.NODE_ENV === "development",
+            });
     }, []);
 
+    const sendGA = (path) => {
+        ReactGA.set({ page: path });
+        ReactGA.pageview(path);
+    }; // I don't want to declare in useEffect loop
+
     useEffect(() => {
-        const currentPath = location.pathname + location.search;
-        ReactGA.set({ page: currentPath });
-        ReactGA.pageview(currentPath);
+        if (process.env.NODE_ENV === "production")
+            sendGA(location.pathname + location.search);
     }, [location]);
 
     return (
