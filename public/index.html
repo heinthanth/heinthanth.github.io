@@ -53,23 +53,14 @@
             content="%REACT_APP_DOMAIN%/assets/images/cover.png"
         />
         <link rel="canonical" href="%REACT_APP_DOMAIN%" />
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org/",
-                "@type": "Person",
-                "name": "Hein Thant Maung Maung",
-                "url": "%REACT_APP_DOMAIN%",
-                "image": "%REACT_APP_DOMAIN%/assets/images/heinthant.jpeg",
-                "sameAs": [
-                    "https://facebook.com/heinthanth",
-                    "https://instagram.com/heinthanth",
-                    "https://linkedin.com/in/heinthanth",
-                    "https://soundcloud.com/heinthanth",
-                    "https://github.com/heinthanth",
-                    "%REACT_APP_DOMAIN%"
-                ]
-            }
-        </script>
+        <link
+            href="%REACT_APP_DOMAIN%/assets/js/ldjson.json"
+            rel="alternate"
+            type="application/ld+json"
+        />
+        <% if (process.env.NODE_ENV === 'production') { %>
+        <script src="%REACT_APP_DOMAIN%/assets/js/hh-init.js"></script>
+        <% } %>
         <!-- global css and fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
