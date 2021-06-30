@@ -47,19 +47,33 @@ const NavBar = () => {
                 >
                     <i className="bi bi-x"></i>
                 </button>
-                <ul className={navbar.links}>{RouteLinks}</ul>
+                <ul className={navbar.links}>
+                    {RouteLinks}
+                    {process.env.NODE_ENV === "production" &&
+                    navigator.userAgent === "ReactSnap" ? (
+                        <Fragment>
+                            <li className={navbar.item}>
+                                <a className={navbar.linkItem} href="/admin">
+                                    Admin
+                                </a>
+                            </li>
+                            <li className={navbar.item}>
+                                <a className={navbar.linkItem} href="/404.html">
+                                    E-404
+                                </a>
+                            </li>
+                        </Fragment>
+                    ) : null}
+                </ul>
                 <div className={navbar.divider}>
                     <hr />
                 </div>
                 <button
                     aria-label="Change Theme to Dark"
                     className={navbar.buttonItem}
-                    onClick={() => {
-                        dispatch(
-                            setTheme(theme === "light" ? "dark" : "light")
-                        );
-                        //setExpanded("collapse");
-                    }}
+                    onClick={() =>
+                        dispatch(setTheme(theme === "light" ? "dark" : "light"))
+                    }
                 >
                     {theme === "light" ? "Dark Theme" : "Light Theme"}
                 </button>
