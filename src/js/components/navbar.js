@@ -1,6 +1,7 @@
 import cx from "classnames";
 import { Fragment, useState } from "react";
 import { v4 as uuid } from "uuid";
+import { Link } from "react-router-dom";
 import GlobalRoutes from "../routes";
 import navbar from "../../sass/components/navbar.module.sass";
 import utils from "../../sass/components/utils.module.sass";
@@ -9,7 +10,11 @@ import { setTheme } from "../redux/actions/global";
 
 const RouteLinks = GlobalRoutes.map((r) => (
     <li key={uuid()} className={navbar.item}>
-        <span className={navbar.linkItem}>{r.name}</span>
+        {["/", "/creations"].includes(r.url) ? (
+            <Link to={r.url} className={navbar.linkItem}>{r.name}</Link>
+        ) : (
+            <span className={navbar.linkItem}>{r.name}</span>
+        )}
     </li>
 ));
 

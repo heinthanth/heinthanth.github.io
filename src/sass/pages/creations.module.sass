@@ -1,0 +1,62 @@
+.page
+    position: relative
+    min-height: 100%
+    transition: height 0.5s
+    padding-top: 110px
+
+    .section
+        h1
+            font-size: 30px
+            text-transform: uppercase
+            margin-bottom: 0
+
+        p
+            word-wrap: break-word
+            hyphens: auto
+
+    .showGrid
+        margin-top: 30px
+        margin-bottom: 20px
+
+        .card
+            border: 1px solid var(--theme-text-color)
+            border-radius: 5px
+
+            &[data-hh-theme="light"] .cardFooter
+                background-color: rgba(0, 0, 0, 0.1)
+
+            // .cardImage
+            //     background-color: #fff
+            //     height: 150px
+
+            .cardContent
+                padding: 30px 10px
+
+                h1
+                    margin-bottom: 10px
+
+                p
+                    font-size: 14px
+                    margin-bottom: 5px
+                    overflow: hidden
+                    white-space: nowrap
+                    text-overflow: ellipsis
+
+            .cardFooter
+                display: flex
+                border-top: 1px solid var(--theme-text-color)
+                padding: 15px 10px
+                background-color: rgba(255, 255, 255, 0.1)
+
+                a
+                    font-weight: bold
+
+                span
+                    margin-left: auto
+
+        .grid
+            margin-bottom: 20px
+
+.footer
+    margin-bottom: 40px
+    text-transform: uppercase

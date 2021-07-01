@@ -11,6 +11,7 @@ host: patch
 	REACT_APP_DOMAIN=https://www.heinthanth.com npm run host
 
 patch:
+	bash -c 'cp node_modules/bootstrap/dist/css/bootstrap-grid.{css,module.css}'
 	bash -c 'patch -N --dry-run --silent node_modules/bootstrap-icons/font/bootstrap-icons.css -i icons.patch &>/dev/null && patch node_modules/bootstrap-icons/font/bootstrap-icons.css < icons.patch || exit 0'
 
 serve:

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import ReactGA from "react-ga";
 
 const HomePage = loadable((props) => import("./pages/home"));
+const CreationsPage = loadable((props) => import("./pages/creations"));
 const NavBar = loadable((props) => import("./components/navbar"));
 const Error404 = loadable((props) => import("./pages/error-404"));
 const AdminPage = loadable((props) => import("./pages/admin/index"));
@@ -51,6 +52,9 @@ const App = () => {
             <Switch>
                 <Route path="/" exact>
                     <HomePage />
+                </Route>
+                <Route path="/creations" exact>
+                    <CreationsPage />
                 </Route>
                 <Route path="/admin">
                     <AdminPage />
