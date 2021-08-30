@@ -10,14 +10,14 @@ const technicalProjects = [
     {
         name: "MacOS BootUSB",
         description: "Create macOS bootable USB outside of MAS.",
-        url: "https://github.com/heinthanth/macos-bootable-usb",
+        url: "https://github.com/htmm/macos-bootable-usb",
         hosting: "GitHub",
         lang: "shell",
     },
     {
         name: "TLCL",
         description: "Burmese translation of The Linux Command Line Book",
-        url: "https://github.com/heinthanth/macos-bootable-usb",
+        url: "https://github.com/htmm/the-linux-command-line",
         hosting: "GitHub",
         lang: "React",
     },
@@ -45,7 +45,7 @@ const technicalProjects = [
     {
         name: "Better Mirror",
         description: "Just a script that select fastest Kali mirror",
-        url: "https://github.com/just-heinthanth/better-mirror",
+        url: "https://github.com/htmm/better-mirror",
         hosting: "GitHub",
         lang: "Python3",
     },
