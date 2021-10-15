@@ -10,7 +10,7 @@ import { setTheme } from "../redux/actions/global";
 
 const RouteLinks = GlobalRoutes.map((r) => (
     <li key={uuid()} className={navbar.item}>
-        {["/", "/creations"].includes(r.url) ? (
+        {["/", "/creations", "/about"].includes(r.url) ? (
             <Link to={r.url} className={navbar.linkItem}>{r.name}</Link>
         ) : (
             <span className={navbar.linkItem}>{r.name}</span>

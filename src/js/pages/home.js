@@ -4,13 +4,14 @@ import homepage from "../../sass/pages/home-shared.module.sass";
 import utils from "../../sass/components/utils.module.sass";
 import { Fragment } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const SocialLinks = [
-    {
-        name: "Facebook",
-        icon: "facebook",
-        url: "https://facebook.com/heintanth",
-    },
+    // {
+    //     name: "Facebook",
+    //     icon: "facebook",
+    //     url: "https://facebook.com/heintanth",
+    // },
     {
         name: "Instagram",
         icon: "instagram",
@@ -26,6 +27,11 @@ const SocialLinks = [
         icon: "linkedin",
         url: "https://linkedin.com/in/heinthanth",
     },
+    {
+        name: "Curriculum Vitae ( CV )",
+        icon: "file-earmark-person",
+        url: `${process.env.PUBLIC_URL}/assets/cv.pdf`
+    }
 ].map((l) => (
     <li key={uuid()} className={homepage.item}>
         <a href={l.url} target="_blank" rel="noreferrer" aria-label={l.name}>
@@ -46,14 +52,17 @@ const HomePage = () => (
                     Just a CS student, Full-stack Web Developer, Junior DevOps
                     and Linux Lover
                 </p>
+                <Link to="/creations" className={homepage.explore}>
+                    Explore Creations
+                </Link>
             </div>
             <div className={homepage.bottomNavigator}>
                 <div className={cx(utils.container, utils.flexItem)}>
                     <ul>{SocialLinks}</ul>
                     <div className={homepage.bottomButtons}>
-                        <button aria-label="Go to Next Page">
+                        <Link to="/creations" aria-label="Go to Next Page">
                             <i className="bi bi-arrow-right-square"></i>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

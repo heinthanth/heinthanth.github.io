@@ -9,6 +9,7 @@ import ReactGA from "react-ga";
 
 const HomePage = loadable((props) => import("./pages/home"));
 const CreationsPage = loadable((props) => import("./pages/creations"));
+const AboutPage = loadable((props) => import("./pages/about"));
 const NavBar = loadable((props) => import("./components/navbar"));
 const Error404 = loadable((props) => import("./pages/error-404"));
 const AdminPage = loadable((props) => import("./pages/admin/index"));
@@ -55,6 +56,9 @@ const App = () => {
                 </Route>
                 <Route path="/creations" exact>
                     <CreationsPage />
+                </Route>
+                <Route path="/about" exact>
+                    <AboutPage />
                 </Route>
                 <Route path="/admin">
                     <AdminPage />

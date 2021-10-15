@@ -8,6 +8,13 @@ import { Fragment } from "react";
 
 const technicalProjects = [
     {
+        name: "heinthanth.com",
+        description: "Source code of this website.",
+        url: "https://github.com/heinthanth/heinthanth.github.io",
+        hosting: "GitHub",
+        lang: "React",
+    },
+    {
         name: "MacOS BootUSB",
         description: "Create macOS bootable USB outside of MAS.",
         url: "https://github.com/htmm/macos-bootable-usb",
@@ -17,9 +24,9 @@ const technicalProjects = [
     {
         name: "TLCL",
         description: "Burmese translation of The Linux Command Line Book",
-        url: "https://github.com/htmm/the-linux-command-line",
+        url: "https://htmm.gitbook.io/the-linux-command-line/",
         hosting: "GitHub",
-        lang: "React",
+        lang: "GitBook",
     },
     {
         name: "Bare",
@@ -29,11 +36,25 @@ const technicalProjects = [
         lang: "PHP",
     },
     {
+        name: "Moddable",
+        description: " Simple, moddable PHP micro-framework based on Symfony",
+        url: "https://github.com/heinthanth/moddable",
+        hosting: "GitHub",
+        lang: "PHP"
+    },
+    {
         name: "COVID 19 API",
         description: "Just COVID 19 tracker API",
         url: "https://github.com/phonemyatkhine/covidapi",
         hosting: "GitHub",
         lang: "Express.js",
+    },
+    {
+        name: "COVID 19 API Client",
+        description: "COVID 19 tracker desktop app",
+        url: "https://github.com/heinthanth/covidapi-client",
+        hosting: "GitHub",
+        lang: "Electron.js"
     },
     {
         name: "UIT-LANG",
@@ -55,6 +76,16 @@ const technicalProjects = [
         url: "https://github.com/heinthanth/h3xfonts",
         hosting: "GitHub",
         lang: "Electron.js",
+    },
+    {
+        name: "UIT Student Union",
+        description: "Website for UIT Student Union ( currently offline )",
+        lang: "PHP ( Laravel )",
+    },
+    {
+        name: "ProLab Myanmar",
+        description: "Website for ProLab Myanmar ( currently offline )",
+        lang: "Next.js",
     },
 ];
 
@@ -90,15 +121,20 @@ const ProjectList = ({ list }) => {
                     <p>{p.description}</p>
                 </div>
                 <div className={css.cardFooter}>
-                    <div>It's on&nbsp;</div>
-                    <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`Go to ${p.hosting}`}
-                    >
-                        {p.hosting}
-                    </a>
+                    {(p.url && (
+                        <>
+                            <div>It's on&nbsp;</div>
+                            <a
+                                href={p.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`Go to ${p.hosting}`}
+                            >
+                                {p.hosting}
+                            </a>
+                        </>
+                    )) || <div>It's Offline</div>}
+
                     <span>{p.lang}</span>
                 </div>
             </div>
@@ -118,6 +154,7 @@ const CreationsPage = () => (
                 </section>
                 <div className={cx(grid.row, css.showGrid)}>
                     <ProjectList list={technicalProjects} />
+                    <div>and more Open-Source, Close-Source projects.</div>
                 </div>
                 <section className={css.section}>
                     <h1>Music</h1>
