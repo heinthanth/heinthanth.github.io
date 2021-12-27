@@ -61,49 +61,78 @@ const NavBar = () => {
     uri === "/" ? p === uri : p.includes(uri));
   const currentRouteIndex = initIndex === -1 ? 0 : initIndex;
   const [indicatorIndex, setIndicatorIndex] = useState(currentRouteIndex);
+  const [navbarOpen, setNavbarOpen] = useState(true);
 
   useEffect(() => {
-    if (!navbar.current) return;
+    console.log("called");
     let scrollListener: () => void;
-
+    const navbar = document.querySelector("#hh-main-navbar");
     import("cash-dom").then(({ default: $ }) => {
       let previousScroll = window.scrollY;
       scrollListener = () =>
         previousScroll > (previousScroll = window.scrollY)
           ? previousScroll === 0
-            ? $(navbar.current).removeClass("shadow-sm") // reach top
-            : $(navbar.current)
-                .addClass("shadow-sm")
-                .removeClass("md:top-[-80px]")
-                .addClass("md:top-[0px]")
-          : $(navbar.current)
-              .removeClass("shadow-sm")
-              .addClass("md:top-[-80px]")
-              .removeClass("md:top-[0px]");
+            ? $(navbar).removeClass("shadow-sm") // reach top
+            : $(navbar).addClass("shadow-sm").removeClass(css.navbarHidden)
+          : $(navbar).removeClass("shadow-sm").addClass(css.navbarHidden);
       window.addEventListener("scroll", scrollListener);
     });
     return () => scrollListener && window.removeEventListener("scroll", scrollListener);
-  }, [navbar]);
+  }, []);
 
   return (
     <nav
       role="navigation"
       ref={navbar}
       className={cx(
-        "navbar overflow-hidden h-full md:h-[1px] min-h-[80px] md:top-[0px] p-0 fixed w-full",
+        "navbar overflow-hidden md:h-[1px] min-h-[80px] p-0 fixed w-full",
         css.navbar
       )}
+      id="hh-main-navbar"
+      data-expanded={navbarOpen}
     >
-      <div className="container h-full md:h-[unset] justify-between p-4 md:px-5 md:py-0 mx-auto flex flex-col md:flex-row items-start md:items-center">
-        <div className={css.logo}>
-          <Link href="/">
-            <a className="py-4">
-              HIIIiN<small className="opacity-0 text-xs">.space</small>
-            </a>
-          </Link>
-          <span className={css.indicator}></span>
+      <div className="container overflow-hidden h-full md:h-[unset] justify-between p-4 md:px-5 md:py-0 mx-auto flex flex-col md:flex-row items-start md:items-center">
+        <div className="flex w-full md:w-[unset] items-center justify-between mt-3 md:mt-0">
+          <div className={cx(css.logo, "md:flex items-center")}>
+            <Link href="/">
+              <a className="py-4">
+                HIIIiN<small className="opacity-0 text-xs whitespace-nowrap">&apos;s space</small>
+              </a>
+            </Link>
+            <span className={css.indicator}></span>
+          </div>
+          <button
+            onClick={() => setNavbarOpen(!navbarOpen)}
+            className="flex items-center space-x-2 focus:outline-none md:hidden"
+          >
+            <div className="w-6 flex items-center justify-center relative">
+              <span
+                className={cx(
+                  "transform transition w-full h-[2px] bg-current absolute",
+                  navbarOpen ? "translate-y-0 rotate-45" : "-translate-y-2"
+                )}
+              ></span>
+              <span
+                className={cx(
+                  "transform transition w-full h-[2px] bg-current absolute",
+                  navbarOpen ? "opacity-0 translate-x-3" : "opacity-100"
+                )}
+              ></span>
+              <span
+                className={cx(
+                  "transform transition w-full h-[2px] bg-current absolute",
+                  navbarOpen ? "translate-y-0 -rotate-45" : "translate-y-2"
+                )}
+              ></span>
+            </div>
+          </button>
         </div>
-        <div className="flex items-center w-full">
+        <div
+          className={cx(
+            "flex items-center overflow-hidden w-full md:h-[unset]",
+            navbarOpen ? "h-[200px]" : "h-0"
+          )}
+        >
           <AnimateSharedLayout>
             <ul role="menu" className="md:mt-0 md:inline-flex md:ml-auto">
               {navbarRoutes.map((route, index) => {
@@ -130,7 +159,9 @@ const NavBar = () => {
             </ul>
           </AnimateSharedLayout>
         </div>
-        <div className="md:hidden">me@heinthant.space</div>
+        <div className={cx("md:hidden overflow-hidden", !navbarOpen && "h-0 py-0")}>
+          me@heinthant.space
+        </div>
       </div>
     </nav>
   );
