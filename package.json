@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "static": "next build && next export"
   },
   "dependencies": {
     "cash-dom": "^8.1.0",
