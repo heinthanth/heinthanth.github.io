@@ -64,30 +64,26 @@ const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   useEffect(() => {
-    console.log("called");
     let scrollListener: () => void;
-    const navbar = document.querySelector("#hh-main-navbar");
     import("cash-dom").then(({ default: $ }) => {
+      const navbar = document.querySelector("#hh-main-navbar");
       let previousScroll = window.scrollY;
       scrollListener = () =>
-        previousScroll > (previousScroll = window.scrollY)
-          ? previousScroll === 0
-            ? $(navbar).removeClass("shadow-sm") // reach top
-            : $(navbar).addClass("shadow-sm").removeClass(css.navbarHidden)
-          : $(navbar).removeClass("shadow-sm").addClass(css.navbarHidden);
+        Math.abs(previousScroll - window.scrollY) >= 100 &&
+        ((window.scrollY === 0 && ($(navbar).removeClass("shadow-sm"), true)) || true) &&
+        (previousScroll > (previousScroll = window.scrollY)
+          ? $(navbar).addClass("shadow-sm").removeClass(css.navbarHidden)
+          : $(navbar).removeClass("shadow-sm").addClass(css.navbarHidden));
       window.addEventListener("scroll", scrollListener);
     });
     return () => scrollListener && window.removeEventListener("scroll", scrollListener);
   }, []);
-
+ 
   return (
     <nav
       role="navigation"
       ref={navbar}
-      className={cx(
-        "navbar overflow-hidden md:h-[1px] min-h-[80px] p-0 fixed w-full",
-        css.navbar
-      )}
+      className={cx("navbar overflow-hidden md:h-[1px] min-h-[80px] p-0 fixed w-full", css.navbar)}
       id="hh-main-navbar"
       data-expanded={navbarOpen}
     >
