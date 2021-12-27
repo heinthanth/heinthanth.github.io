@@ -61,7 +61,7 @@ const NavBar = () => {
     uri === "/" ? p === uri : p.includes(uri));
   const currentRouteIndex = initIndex === -1 ? 0 : initIndex;
   const [indicatorIndex, setIndicatorIndex] = useState(currentRouteIndex);
-  const [navbarOpen, setNavbarOpen] = useState(true);
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   useEffect(() => {
     console.log("called");
