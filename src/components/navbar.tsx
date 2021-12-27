@@ -69,8 +69,8 @@ const NavBar = () => {
       const navbar = document.querySelector("#hh-main-navbar");
       let previousScroll = window.scrollY;
       scrollListener = () =>
+        ((window.scrollY < 20 && ($(navbar).removeClass("shadow-sm"), true)) || true) &&
         Math.abs(previousScroll - window.scrollY) >= 100 &&
-        ((window.scrollY === 0 && ($(navbar).removeClass("shadow-sm"), true)) || true) &&
         (previousScroll > (previousScroll = window.scrollY)
           ? $(navbar).addClass("shadow-sm").removeClass(css.navbarHidden)
           : $(navbar).removeClass("shadow-sm").addClass(css.navbarHidden));
@@ -78,7 +78,7 @@ const NavBar = () => {
     });
     return () => scrollListener && window.removeEventListener("scroll", scrollListener);
   }, []);
- 
+
   return (
     <nav
       role="navigation"
