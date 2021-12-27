@@ -64,18 +64,18 @@ const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   useEffect(() => {
-    let scrollListener: () => void;
-    import("cash-dom").then(({ default: $ }) => {
-      const navbar = document.querySelector("#hh-main-navbar");
-      let previousScroll = window.scrollY;
-      scrollListener = () =>
-        ((window.scrollY < 20 && ($(navbar).removeClass("shadow-sm"), true)) || true) &&
-        Math.abs(previousScroll - window.scrollY) >= 100 &&
-        (previousScroll > (previousScroll = window.scrollY)
-          ? $(navbar).addClass("shadow-sm").removeClass(css.navbarHidden)
-          : $(navbar).removeClass("shadow-sm").addClass(css.navbarHidden));
-      window.addEventListener("scroll", scrollListener);
-    });
+    const navbar = document.querySelector("#hh-main-navbar");
+    let previousScroll = window.scrollY;
+    const scrollListener = () =>
+      (window.scrollY <= 20
+        ? navbar?.classList.add("shadow-none")
+        : navbar?.classList.remove("shadow-none"),
+      true) &&
+      Math.abs(previousScroll - window.scrollY) >= 100 &&
+      (previousScroll > (previousScroll = window.scrollY)
+        ? navbar?.classList.remove(css.navbarHidden)
+        : navbar?.classList.add(css.navbarHidden));
+    window.addEventListener("scroll", scrollListener);
     return () => scrollListener && window.removeEventListener("scroll", scrollListener);
   }, []);
 

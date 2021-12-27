@@ -4,6 +4,7 @@
     background-position: center
     background-size: cover
     height: 80px
+    @apply shadow-sm
 
     &[data-expanded="true"]
         height: 100%
@@ -15,6 +16,8 @@
             height: 80px
 
 .navbarHidden
+    @apply shadow-none
+
     &[data-expanded="false"]
         top: -80px
 
