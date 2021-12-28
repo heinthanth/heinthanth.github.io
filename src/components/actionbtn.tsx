@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Fab, Action } from "react-tiny-fab";
-import { DarkModeSwitch } from "./darkmode-toggle";
+import { MoonIcon, SunIcon } from "./darkmode-toggle";
 import cx from "classnames";
 import css from "../sass/components/actionbtn.module.scss";
 
 const FloatActionButton = () => {
-  const [darkmode, setDarkMode] = useState(false);
-
+  const [darkmode, setDarkMode] = useState(true);
   return (
     <div className={cx("h-[56px] fixed w-full bottom-[10px] right-0", css.actionbtn)}>
       <div className="container mx-auto h-full px-4 md:px-5 relative">
@@ -27,7 +26,9 @@ const FloatActionButton = () => {
           }
         >
           <Action text={darkmode ? "switch to light" : "switch to dark"}>
-            <DarkModeSwitch checked={darkmode} onChange={(value: boolean) => setDarkMode(value)} />
+            <span onClick={() => setDarkMode(!darkmode)}>
+              {darkmode ? <SunIcon style={{ color: "#000" }} /> : <MoonIcon />}
+            </span>
           </Action>
         </Fab>
       </div>
