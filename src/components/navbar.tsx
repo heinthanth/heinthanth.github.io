@@ -79,13 +79,20 @@ const NavBar = () => {
     return () => scrollListener && window.removeEventListener("scroll", scrollListener);
   }, []);
 
+  // prettier-ignore
+  const toggleNavbar = (shouldOpen: boolean) => (
+    shouldOpen
+      ? document.body.classList.add("overflow-hidden", "md:overflow-auto")
+      : document.body.classList.remove("overflow-hidden", "md:overflow-auto"),
+    setNavbarOpen(shouldOpen));
+
   return (
     <nav
       role="navigation"
       ref={navbar}
       className={cx("navbar overflow-hidden md:h-[1px] min-h-[80px] p-0 fixed w-full", css.navbar)}
       id="hh-main-navbar"
-      data-expanded={navbarOpen}
+      data-navbar-md-expanded={navbarOpen}
     >
       <div className="container overflow-hidden h-full md:h-[unset] justify-between p-4 md:px-5 md:py-0 mx-auto flex flex-col md:flex-row items-start md:items-center">
         <div className="flex w-full md:w-[unset] items-center justify-between mt-3 md:mt-0">
@@ -98,7 +105,7 @@ const NavBar = () => {
             <span className={css.indicator}></span>
           </div>
           <button
-            onClick={() => setNavbarOpen(!navbarOpen)}
+            onClick={() => toggleNavbar(!navbarOpen)}
             className="flex items-center space-x-2 focus:outline-none md:hidden"
           >
             <div className="w-6 flex items-center justify-center relative">
