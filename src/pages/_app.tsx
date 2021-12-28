@@ -1,9 +1,11 @@
 import type { AppProps } from "next/app";
 import { Fragment } from "react";
-import { Fab, Action } from "react-tiny-fab";
 import NavBar from "../components/navbar";
 import Head from "../components/head";
 import "../sass/app.sass";
+import dynamic from "next/dynamic";
+
+const FloatActionButton = dynamic(() => import("../components/actionbtn"), { ssr: false });
 
 const App = ({ Component, pageProps }: AppProps) => (
   <Fragment>
@@ -17,9 +19,7 @@ const App = ({ Component, pageProps }: AppProps) => (
     </Head>
     <NavBar />
     <Component {...pageProps} />
-    <Fab>
-      <Action text="change theme" />
-    </Fab>
+    <FloatActionButton />
   </Fragment>
 );
 
