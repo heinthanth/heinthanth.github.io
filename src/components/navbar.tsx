@@ -39,7 +39,6 @@ const NavLink = ({
     <Link href={to}>
       <a
         className={cx("py-2 md:py-4 md:px-3", showIndicator && "font-bold")}
-        role="menuitem"
         aria-label={ariaLabel}
         aria-current={currentRoute ? "page" : undefined}
       >
@@ -112,6 +111,9 @@ const NavBar = () => {
           <button
             onClick={() => toggleNavbar(!navbarOpen)}
             className="flex w-[24px] h-[24px] items-center space-x-2 focus:outline-none md:hidden"
+            aria-label="Toggle Navigation bar"
+            aria-controls="main-nav-menubar"
+            aria-expanded={navbarOpen}
           >
             <div className="w-6 flex items-center justify-center relative">
               <span
@@ -140,9 +142,10 @@ const NavBar = () => {
             "flex items-center overflow-hidden w-full md:h-[unset]",
             navbarOpen ? "h-[200px]" : "h-0"
           )}
+          id="main-nav-menubar"
         >
           <AnimateSharedLayout>
-            <ul role="menu" className="md:mt-0 md:inline-flex md:ml-auto">
+            <ul className="md:mt-0 md:inline-flex md:ml-auto">
               {navbarRoutes.map((route, index) => {
                 const isCurrentRoute = currentRouteIndex === index;
                 const shouldShowIndicator = indicatorIndex === index;

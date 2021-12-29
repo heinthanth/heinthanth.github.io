@@ -1,12 +1,9 @@
 import type { AppProps } from "next/app";
-import { Fragment } from "react";
 import NavBar from "../components/navbar";
 import Head from "../components/head";
 import "../sass/app.sass";
 import dynamic from "next/dynamic";
 import { AppState, wrapper } from "../redux/store";
-import App from "next/app";
-import { ThemeState } from "../redux/states/theme";
 import { connect } from "react-redux";
 
 const FloatActionButton = dynamic(() => import("../components/actionbtn"), { ssr: false });
