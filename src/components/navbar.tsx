@@ -68,13 +68,14 @@ const NavBar = () => {
     let previousScroll = window.scrollY;
     const scrollListener = () =>
       (window.scrollY <= 20
-        ? navbar?.classList.add("shadow-none", "bg-transparent")
-        : navbar?.classList.remove("shadow-none", "bg-transparent"),
+        ? navbar?.classList.add("shadow-none", css.transparent)
+        : navbar?.classList.remove("shadow-none", css.transparent),
       true) &&
       Math.abs(previousScroll - window.scrollY) >= 100 &&
       (previousScroll > (previousScroll = window.scrollY)
         ? navbar?.classList.remove(css.navbarHidden)
         : navbar?.classList.add(css.navbarHidden));
+    // scrollListener(); // called on startup
     window.addEventListener("scroll", scrollListener);
     return () => scrollListener && window.removeEventListener("scroll", scrollListener);
   }, []);
@@ -92,7 +93,8 @@ const NavBar = () => {
       ref={navbar}
       className={cx(
         "navbar bg-neutral overflow-hidden md:h-[1px] min-h-[80px] p-0 fixed w-full text-neutral-content",
-        css.navbar
+        css.navbar,
+        css.transparent
       )}
       id="hh-main-navbar"
       data-navbar-md-expanded={navbarOpen}
@@ -109,7 +111,7 @@ const NavBar = () => {
           </div>
           <button
             onClick={() => toggleNavbar(!navbarOpen)}
-            className="flex items-center space-x-2 focus:outline-none md:hidden"
+            className="flex w-[24px] h-[24px] items-center space-x-2 focus:outline-none md:hidden"
           >
             <div className="w-6 flex items-center justify-center relative">
               <span

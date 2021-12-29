@@ -15,7 +15,7 @@ const FloatActionButton = dynamic(() => import("../components/actionbtn"), { ssr
 interface CustomAppProps extends AppProps { initialReduxState: AppState }
 
 const CustomApp = ({ Component, pageProps, initialReduxState }: CustomAppProps) => (
-  <main id="hh-space" data-theme={initialReduxState.theme.value === "dark" ? "dark" : "lofi"}>
+  <main id="hh-space" data-theme={initialReduxState.theme.value}>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
@@ -23,7 +23,11 @@ const CustomApp = ({ Component, pageProps, initialReduxState }: CustomAppProps) 
       <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       <link rel="manifest" href="/space.webmanifest" />
       <meta key="color-scheme" name="color-scheme" content={initialReduxState.theme.value} />
-      <meta key="theme-color" name="theme-color" content="#333" />
+      <meta
+        key="theme-color"
+        name="theme-color"
+        content={initialReduxState.theme.value === "dark" ? "#1E2022" : "#FFFFFF"}
+      />
     </Head>
     <NavBar />
     <Component {...pageProps} />

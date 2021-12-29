@@ -14,7 +14,9 @@ export const themeReducer = (
 ): ThemeState =>
   action.type === SET_THEME
     ? { value: action.payload.value || state.value }
-    : { value: action.payload?.theme.value || state.value };
+    : action.type === HYDRATE
+    ? { value: action.payload?.theme.value || state.value }
+    : state;
 
 export const negateTheme = (theme: string): string => (theme === "dark" ? "light" : "dark");
 export const setTheme = (value: string): ThemeAction => ({ type: SET_THEME, payload: { value } });
