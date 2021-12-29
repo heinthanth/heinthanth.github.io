@@ -6,6 +6,6 @@ export const titleGen = (t: string) => `${t} - ${title}`;
 export const searchWords =
   ["Hein Thant Maung Maung", "HIIIiN", "Hein Thanth", "heinthanth", "ဟိန်းသန့် မောင်မောင်", "ဟိန်းဟိန်း"];
 export const description =
-  "Just a Computer Science student at UIT, Full-stack Web Developer, Junior DevOps, Linux and Open Source Lover, and passionate Programming Language hacker, and also, love to create Electronic Dance Music, too!";
+  "Just a CS student at UIT, Full-stack Web Developer, Junior DevOps, Open Source Lover, and passionated Language hacker, and also, love to create EDM, too!";
 export const coverLocation = `${siteURL}/pics/cover.png`;
 export const creator = "Hein Thant Maung Maung ( HIIIiN )";

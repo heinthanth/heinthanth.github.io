@@ -1,13 +1,14 @@
 import type { AppProps } from "next/app";
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 import NavBar from "../components/navbar";
 import Head from "../components/head";
 import "../sass/app.sass";
 import dynamic from "next/dynamic";
+import { wrapper } from "../redux/store";
 
 const FloatActionButton = dynamic(() => import("../components/actionbtn"), { ssr: false });
 
-const App = ({ Component, pageProps }: AppProps) => (
+const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => (
   <Fragment>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
@@ -23,4 +24,4 @@ const App = ({ Component, pageProps }: AppProps) => (
   </Fragment>
 );
 
-export default App;
+export default wrapper.withRedux(App);
