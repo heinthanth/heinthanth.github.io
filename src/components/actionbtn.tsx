@@ -1,39 +1,51 @@
-import { useState } from "react";
 import { Fab, Action } from "react-tiny-fab";
-import { MoonIcon, SunIcon } from "./darkmode-toggle";
+import { MoonIcon, SunIcon } from "./darkswitch";
 import cx from "classnames";
 import css from "../sass/components/actionbtn.module.scss";
+import { connect } from "react-redux";
+import { AppState } from "../redux/store";
+import { negateTheme, setTheme, ThemeAction, ThemeState } from "../redux/states/theme";
+import { Dispatch } from "redux";
 
-const FloatActionButton = () => {
-  const [darkmode, setDarkMode] = useState(true);
-  return (
-    <div className={cx("h-[56px] fixed w-full bottom-[10px] right-0", css.actionbtn)}>
-      <div className="container mx-auto h-full px-4 md:px-5 relative">
-        <Fab
-          event="click"
-          style={{ position: "absolute", right: 28, bottom: 0, margin: 0 }}
-          icon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
-              <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
-            </svg>
-          }
-        >
-          <Action text={darkmode ? "switch to light" : "switch to dark"}>
-            <span onClick={() => setDarkMode(!darkmode)}>
-              {darkmode ? <SunIcon style={{ color: "#000" }} /> : <MoonIcon />}
-            </span>
-          </Action>
-        </Fab>
-      </div>
+const FloatActionButton = ({
+  theme,
+  dispatch,
+}: {
+  theme: ThemeState;
+  dispatch: Dispatch<ThemeAction>;
+}) => (
+  <div
+    className={cx("h-[56px] fixed w-full bottom-[30px] right-0", css.actionbtn)}
+    data-theme={theme.value}
+  >
+    <div className="container mx-auto h-full px-4 md:px-5 relative">
+      <Fab
+        event="click"
+        style={{ position: "absolute", right: 28, bottom: 0, margin: 0 }}
+        icon={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+          </svg>
+        }
+      >
+        <Action text={theme.value === "dark" ? "switch to light" : "switch to dark"}>
+          <span
+            className="w-full h-full flex items-center justify-center"
+            onClick={() => dispatch(setTheme(negateTheme(theme.value)))}
+          >
+            {theme.value === "dark" ? <SunIcon /> : <MoonIcon />}
+          </span>
+        </Action>
+      </Fab>
     </div>
-  );
-};
+  </div>
+);
 
-export default FloatActionButton;
+export default connect(({ theme }: AppState) => ({ theme }))(FloatActionButton);

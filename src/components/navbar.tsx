@@ -68,8 +68,8 @@ const NavBar = () => {
     let previousScroll = window.scrollY;
     const scrollListener = () =>
       (window.scrollY <= 20
-        ? navbar?.classList.add("shadow-none")
-        : navbar?.classList.remove("shadow-none"),
+        ? navbar?.classList.add("shadow-none", "bg-transparent")
+        : navbar?.classList.remove("shadow-none", "bg-transparent"),
       true) &&
       Math.abs(previousScroll - window.scrollY) >= 100 &&
       (previousScroll > (previousScroll = window.scrollY)
@@ -90,7 +90,10 @@ const NavBar = () => {
     <nav
       role="navigation"
       ref={navbar}
-      className={cx("navbar overflow-hidden md:h-[1px] min-h-[80px] p-0 fixed w-full", css.navbar)}
+      className={cx(
+        "navbar bg-neutral overflow-hidden md:h-[1px] min-h-[80px] p-0 fixed w-full text-neutral-content",
+        css.navbar
+      )}
       id="hh-main-navbar"
       data-navbar-md-expanded={navbarOpen}
     >

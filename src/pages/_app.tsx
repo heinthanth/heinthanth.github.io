@@ -1,27 +1,36 @@
 import type { AppProps } from "next/app";
-import { FC, Fragment } from "react";
+import { Fragment } from "react";
 import NavBar from "../components/navbar";
 import Head from "../components/head";
 import "../sass/app.sass";
 import dynamic from "next/dynamic";
-import { wrapper } from "../redux/store";
+import { AppState, wrapper } from "../redux/store";
+import App from "next/app";
+import { ThemeState } from "../redux/states/theme";
+import { connect } from "react-redux";
 
 const FloatActionButton = dynamic(() => import("../components/actionbtn"), { ssr: false });
 
-const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => (
-  <Fragment>
+// prettier-ignore
+interface CustomAppProps extends AppProps { initialReduxState: AppState }
+
+const CustomApp = ({ Component, pageProps, initialReduxState }: CustomAppProps) => (
+  <main id="hh-space" data-theme={initialReduxState.theme.value === "dark" ? "dark" : "lofi"}>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       <link rel="manifest" href="/space.webmanifest" />
-      <meta key="color-scheme" name="color-scheme" content="light" />
+      <meta key="color-scheme" name="color-scheme" content={initialReduxState.theme.value} />
+      <meta key="theme-color" name="theme-color" content="#333" />
     </Head>
     <NavBar />
     <Component {...pageProps} />
     <FloatActionButton />
-  </Fragment>
+  </main>
 );
 
-export default wrapper.withRedux(App);
+const connectedApp = connect((state: AppState) => ({ initialReduxState: state }))(CustomApp);
+
+export default wrapper.withRedux(connectedApp);
