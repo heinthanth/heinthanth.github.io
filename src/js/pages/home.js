@@ -30,7 +30,7 @@ const SocialLinks = [
     {
         name: "Curriculum Vitae ( CV )",
         icon: "file-earmark-person",
-        url: `${process.env.PUBLIC_URL}/assets/cv.pdf`
+        url: `${process.env.PUBLIC_URL}/assets/HT-CV-JUN-2025-01.pdf`
     }
 ].map((l) => (
     <li key={uuid()} className={homepage.item}>
